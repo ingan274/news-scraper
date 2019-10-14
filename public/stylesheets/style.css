@@ -69,5 +69,6 @@
 .noarticle {
   font-family: var(--text-font);
   text-transform: uppercase;
-  color: var(--blue)
+  color: var(--blue);
+  text-align: center;
 }
