@@ -8,12 +8,12 @@
         <p class="summary">{{description}} <a href="{{link}}" target="_blank">Read more in new tab.</a></p>
         {{#if ../home}}
         {{#if saved}}
-        <img src="/images/save.png" data-article-id="{{_id}}" class="saveaddbtn">
+        <img src="/images/save.png" data-article-id="{{_id}}" class="saveaddbtn unsave" >
         {{else}}
-        <img src="/images/nosave.png" data-article-id="{{_id}}" class="saveaddbtn">
+        <img src="/images/nosave.png" data-article-id="{{_id}}" class="saveaddbtn save">
         {{/if}}
         {{else}}
-        <img src="/images/nosave.png" class="saveaddbtn" data-article-id="{{_id}}">
+        <img src="/images/nosave.png" class="saveaddbtn unsave" data-article-id="{{_id}}">
         {{/if}}
         <img src="/images/addnote.png" data-article-id="{{_id}}" class="saveaddbtn">
     </div>

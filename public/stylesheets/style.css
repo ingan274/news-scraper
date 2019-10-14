@@ -21,16 +21,16 @@
 }
 
 .home-btn, .saved-btn, .scrape-btn {
-  font-family: var(--text-font);
+  font-family: var(--title-font);
   padding: 4px 8px;
   font-size: 15px;
   color: var(--black);
   background: none;
   border:none;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
-.home-btn:hover, .saved-btn:hover, .scrape-btn:hover {
+.home-btn:hover, .saved-btn:hover, .scrape-btn:hover, .saved-btn:active {
   color: var(--blue);
   background: none;
   border:none;
@@ -72,3 +72,5 @@
   color: var(--blue);
   text-align: center;
 }
+
+/* ----- ARTICLE CSS (IND) */
