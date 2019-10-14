@@ -1,2 +1,5 @@
 # News Scraper
-New Scraper using Mongoose and Cheerio
+News Scraper using Mongoose and Cheerio
+
+<img src="https://media.giphy.com/media/xUNemVaUZFSgHxvQXK/giphy.gif">
+
