@@ -1,7 +1,73 @@
 :root {
   --blue: #75c4c1;
+  --blue-half: #75c4c181;
   --black: #1f282f;
   --grey: #b1b1b1;
-  --title-font: 'Lato', sans-serif;
-  --text-font:'Playfair Display', serif;
+  --grey-half: #b1b1b17c;
+  --text-font: 'Lato', sans-serif;
+  --title-font:'Playfair Display', serif;
+}
+
+.head {
+  margin: 120px auto;
+}
+
+.navbar-toggler {
+  background-color: var(--grey-half);
+}
+
+.navbar-toggler:hover {
+  background-color: var(--blue-half)
+}
+
+.home-btn, .saved-btn, .scrape-btn {
+  font-family: var(--text-font);
+  padding: 4px 8px;
+  font-size: 15px;
+  color: var(--black);
+  background: none;
+  border:none;
+  text-transform: uppercase;
+}
+
+.home-btn:hover, .saved-btn:hover, .scrape-btn:hover {
+  color: var(--blue);
+  background: none;
+  border:none;
+}
+
+.websiteTitle {
+  font-family: var(--title-font);
+  font-size: 18px;
+  margin: 10px auto;
+  padding: 4px 8px;
+  color: var(--black);
+  text-align: center;
+}
+
+.subtitle {
+  font-family: var(--text-font);
+  font-size: 15px;
+  color: var(--grey);
+  margin: 10px 5px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+#disabled-btn {
+  color: var(--black);
+}
+
+.pageTitle {
+  font-family: var(--text-font);
+  text-transform: uppercase;
+  color: var(--black);
+  text-align: center;
+  margin: 50px;
+}
+
+.noarticle {
+  font-family: var(--text-font);
+  text-transform: uppercase;
+  color: var(--blue)
 }

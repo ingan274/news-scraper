@@ -1,37 +1,43 @@
 const scrapeSite = require("./scraper");
 const db = require("../models");
 
-export default app => {
+module.exports = (app) => {
     app.get("/articles/scrape", (request, response) => {
         scrapeSite(response);
     })
 
     app.get("/", (request, response) => {
         db.Article.find()
-            .populate("notes")
             .sort({ '_id': -1 })
             .then(foundArticles => {
                 const handlebarsObject = {
                     home: true,
                     articles: foundArticles
                 }
-                response.render("index", handlebarsObject);
+                response.render("home", handlebarsObject);
             })
             .catch(error => response.json(error));
     })
 
     app.get("/articles/saved", (request, response) => {
-        db.Article.find({ saved: true })
-            .populate("notes")
+        db.Article.find({saved: true})
             .sort({ '_id': -1 })
             .then(foundArticles => {
                 const handlebarsObject = {
                     home: false,
                     articles: foundArticles
                 }
-                response.render("index", handlebarsObject);
+                response.render("home", handlebarsObject);
             })
             .catch(error => response.json(error));
+    })
+
+    app.get("/articles/:articleId", (request, response) => {
+        db.Article.findOne({ _id: request.params.articleId })
+            .then(foundArticles => {
+                response.render("article", foundArticles);
+            })
+            .catch(error => response.json(error))
     })
 
     app.put("/articles/save/:articleId", (request, response) => {

@@ -7,36 +7,29 @@ const scrapeSite = (serverResponse) => {
         const $ = cheerio.load(html);
 
         $(".card.card--standard").each((i, element) => {
-            const title = $(element).children().text()
-                .split(/\n?\t/)
-                .filter(value => value)[0];
-            const uri = $(element).children().attr("href");
-            const author = $(element).next().find("a").text()
-                .split(/\n?\t/)
-                .filter(value => value)
-                .join(", ");
-            const blurb = $(element).parent().next().text()
-                .split(/\n?\t/)
-                .filter(value => value)
-                .concat("...")
-                .join("");
-
+            const link = $(element).children("a").attr("href");
+            const title = $(element).children(".card__text").children(".card__headlines").text()
+            const author = $(element).children(".card__text").children(".card__byline").text()
+            const blurb = $(element).children(".card__text").children(".card__description").text()
             if (author) {
                 const article = {
                     title: title,
-                    uri: uri,
+                    link: link,
                     author: author,
-                    blurb: blurb
+                    description: blurb
                 }
 
-                db.Article.find({ uri: article.uri })
+                db.Article.find({ link: article.link })
                     .then(foundArticle => {
                         if (!foundArticle.length) {
                             db.Article.create(article)
                                 .catch(error => serverResponse.json(error));
                         }
                     })
-                    .catch(error => serverResponse.json(error));
+                    .catch(error => {
+                        serverResponse.json(error);
+                        res.sendStatus(500)
+                    })
             }
         })
 
@@ -44,4 +37,4 @@ const scrapeSite = (serverResponse) => {
     })
 }
 
-export default scrapeSite;
+module.exports = scrapeSite;

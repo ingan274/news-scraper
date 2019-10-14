@@ -1,16 +1,33 @@
-<div class="head">
+<div class="head container">
     <div class="row">
-        {{#if home}}
-        <a href="/" class="btn home-btn disabled" id="disabled-btn">Home</a>
-        <a href="/articles/saved" class="btn saved-btn btn-light">Saved Articles</a>
-        {{else}}
-        <a href="/" class="btn home-btn">Home</a>
-        <a href="/articles/saved" class="btn saved-btn disabled" id="disabled-btn">Saved Articles</a>
-        {{/if}}
-        <button class="btn" id="scrape">Scrape!</button>
+        <div class="pos-f-t col-1">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class=" p-4">
+                    <div class="col-4">
+                        {{#if home}}
+                        <a href="/" class="btn home-btn disabled" id="disabled-btn">Home</a>
+                        <a href="/articles/saved" class="btn saved-btn btn-light">Saved Articles</a>
+                        {{else}}
+                        <a href="/" class="btn home-btn">Home</a>
+                        <a href="/articles/saved" class="btn saved-btn disabled" id="disabled-btn">Saved Articles</a>
+                        {{/if}}
+                        <button class="btn scrape-btn" id="scrape">Refresh News</button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-dark ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
 
-        <h1 class="websiteTitle">Epicenter <span class="text-light">For the latest and greatest in political news</span>
+        <h1 class="websiteTitle col-10">Epicenter <span class="subtitle">For the latest and greatest in political
+                news</span>
         </h1>
+        <div class="col-1"></div>
     </div>
 </div>
 
@@ -18,23 +35,22 @@
 
     <h3 class="pageTitle">
         {{#if home}}
-        Home
         {{else}}
         Saved Articles
         {{/if}}
     </h3>
     {{#if articles.length}}
-        {{#each articles}}
-            {{> articles}}
-        {{/each}}
+    {{#each articles}}
+    {{> articles}}
+    {{/each}}
     {{else}}
     <div class="noarticle">
         No articles
         {{#if home}}
-        found. Try hitting Scrape to see what's new!
+        found. Try hitting "Refresh News" in the menu to see what's new!
         {{else}}
         saved. Head to the home page to find some faves!
-        {{/if}}]
+        {{/if}}
     </div>
     {{/if}}
 
