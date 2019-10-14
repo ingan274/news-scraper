@@ -1,0 +1,20 @@
+<div class="article">
+    <div class="card-header" id="{{_id}}-block">
+        <h5 class="articleTitle">
+            {{title}}
+        </h5>
+        <hr class="line">
+        <p class='author'>by {{author}}</p>
+        <p class="summary">{{description}} <a href="{{link}}" target="_blank">Read more in new tab.</a></p>
+        {{#if ../home}}
+        {{#if saved}}
+        <img src="/images/save.png" data-article-id="{{_id}}" class="saveaddbtn">
+        {{else}}
+        <img src="/images/nosave.png" data-article-id="{{_id}}" class="saveaddbtn">
+        {{/if}}
+        {{else}}
+        <img src="/images/nosave.png" class="saveaddbtn" data-article-id="{{_id}}">
+        {{/if}}
+        <img src="/images/addnote.png" data-article-id="{{_id}}" class="saveaddbtn">
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div id="{{_id}}" class="container">
+    {{title}}
+    <hr class="line">
+    <p class='author'>by {{author}}</p>
+    <p class="summary">{{description}} <a href="{{link}}" target="_blank">Read Full Article in new tab.</a></p>
+
+    <div class="note">
+        {{#if notes}}
+        <div class="notes">
+            <div class="notes-header">
+                Notes
+            </div>
+            <div class="all-notes">
+                {{#each notes}}
+                <div class="note-body">
+                    {{body}}
+                    <img src="/images/remove-button.png" data-article-id="{{_id}}" class="deleteNote"
+                        data-note-id="{{_id}}" data-article-id="{{../_id}}">
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{else}}
+        <div class="notes">
+            <div class="notes-header">
+                There are no notes for this article yet. Why don't you write the first one?
+            </div>
+        </div>
+        {{/if}}
+        <br>
+        <form>
+            <div class="form-group">
+                <label for="noteInput">Add a Note:</label>
+                <textarea class="form-control" id="{{_id}}-input" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary add-note" data-article-id="{{_id}}">Submit</button>
+        </form>
+    </div>
+</div>

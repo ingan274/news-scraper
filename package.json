@@ -1,0 +1,34 @@
+{
+  "name": "huffpo-news-scraper",
+  "version": "1.0.0",
+  "description": "News Scraper for Political news on the  Huffington Post Website",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mongoose": "^5.7.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingan274/news-scraper.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "scraper",
+    "handlebars"
+  ],
+  "author": "Isabel Ngan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ingan274/news-scraper/issues"
+  },
+  "homepage": "https://github.com/ingan274/news-scraper#readme"
+}

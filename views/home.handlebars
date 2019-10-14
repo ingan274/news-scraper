@@ -1,0 +1,41 @@
+<div class="head">
+    <div class="row">
+        {{#if home}}
+        <a href="/" class="btn home-btn disabled" id="disabled-btn">Home</a>
+        <a href="/articles/saved" class="btn saved-btn btn-light">Saved Articles</a>
+        {{else}}
+        <a href="/" class="btn home-btn">Home</a>
+        <a href="/articles/saved" class="btn saved-btn disabled" id="disabled-btn">Saved Articles</a>
+        {{/if}}
+        <button class="btn" id="scrape">Scrape!</button>
+
+        <h1 class="websiteTitle">Epicenter <span class="text-light">For the latest and greatest in political news</span>
+        </h1>
+    </div>
+</div>
+
+<div class="container">
+
+    <h3 class="pageTitle">
+        {{#if home}}
+        Home
+        {{else}}
+        Saved Articles
+        {{/if}}
+    </h3>
+    {{#if articles.length}}
+        {{#each articles}}
+            {{> articles}}
+        {{/each}}
+    {{else}}
+    <div class="noarticle">
+        No articles
+        {{#if home}}
+        found. Try hitting Scrape to see what's new!
+        {{else}}
+        saved. Head to the home page to find some faves!
+        {{/if}}]
+    </div>
+    {{/if}}
+
+</div>
