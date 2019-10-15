@@ -22,17 +22,15 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-// Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/huffpo_politics_db", { useNewUrlParser: true });
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 var apiRoutes = require("./routes/api-routes");
 apiRoutes(app);
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
-mongoose.connect(MONGODB_URI);
+// Connect to the Mongo DB
+var connection = process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
+mongoose.connect(connection, { useNewUrlParser: true });
 mongoose.Promise = Promise;
 
 // Start the server
