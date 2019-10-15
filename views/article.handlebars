@@ -9,18 +9,19 @@
     </a>
 
     <div class="note">
-        {{#if notes}}
+        {{#if note}}
         <div class="notes">
             <div class="notes-header">
                 Notes
             </div>
-            <div class="all-notes">
-                {{#each notes}}
-                <div class="note-body">
-                    {{body}}
-                    <img src="/images/remove-button.png" data-article-id="{{_id}}" class="delete-note"
-                        data-note-id="{{_id}}" data-article-id="{{../_id}}">
+            <div class="all-notes container">
+                {{#each note}}
+                <div class="note-body row">
+                    <div class="col-11">{{body}}</div>
+                    <div class="col-1 exit-button"> <img src="/images/remove-button.png" data-article-id="{{../_id}}" class=" delete-note" id=""
+                        data-note-id="{{_id}}"></div>
                 </div>
+                <hr class="noteline">
                 {{/each}}
             </div>
         </div>

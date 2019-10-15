@@ -37,18 +37,27 @@ $(document).ready(function(){
     $(".add-note").on("click", function (event) {
         event.preventDefault();
         const articleId = $(this).data("article-id");
+        // alert(articleId)
         const note = $(`#${articleId}-input`).val().trim();
 
         if (note) {
             $(`#${articleId}-input`).val("");
-            $.post("/notes/submit", { articleId: articleId, note: note }, data => location.reload())
+            $.ajax("/notes/submit", {
+                type: "POST",
+                data: {
+                    articleId: articleId,
+                    note: note
+                }
+            }).then(window.location.reload())
+            .catch(err => console.log(err));
         }
     })
 
-    $(".delete-note").on("click", function (event) {
+    $(".exit-button").on("click", ".delete-note", function (event) {
         const noteId = $(this).data("note-id");
         $.ajax(`/notes/delete/${noteId}`, {
             type: "DELETE"
-        }).then(data => location.reload());
+        }).then(data => window.location.reload())
+        .catch(err => console.log(err));
     })
 })

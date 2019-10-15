@@ -193,3 +193,30 @@ form {
   color: var(--black);
   font-size: 18px;
 }
+
+/* NOTES!! */
+
+.note-body {
+  padding: 30px;
+  font-family: var(--text-font);
+  color: var(--black);
+}
+
+.noteline {
+  border-top: 1px solid var(--grey-half);
+  width: 90%;
+  margin: 10px auto;
+}
+
+.exit-button {
+  text-align: right;
+}
+
+.delete-note {
+  width: 20px;
+}
+
+.delete-note:hover {
+  background: var(--grey-half);
+  border-radius: 10px;
+}

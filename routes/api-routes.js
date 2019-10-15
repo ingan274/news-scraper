@@ -4,6 +4,7 @@ const db = require("../models/index.js");
 const cheerio = require("cheerio");
 
 module.exports = (app) => {
+    // scraping website (working)
     app.get("/articles/scrape", (request, response) => {
         const url = "https://www.huffpost.com/news/politics/"
         // Making a request via axios for reddit's "webdev" board. The page's HTML is passed as the callback's third argument
@@ -24,20 +25,20 @@ module.exports = (app) => {
                     saved: false
                 }
                 console.log(article);
-                db.Article.find({ link: article.link})
+                db.Article.find({ link: article.link })
                     .then(foundArticle => {
                         if (!foundArticle.length) {
                             db.Article.create(article)
                                 .catch(error => console.log(error));
                         }
                     })
-                    .catch(error =>  console.log(error));
+                    .catch(error => console.log(error));
             });
             console.log("Scrape complete.");
         })
     })
 
-    // home
+    // home (working)
     app.get("/", (request, response) => {
         db.Article.find()
             .sort({ '_id': -1 })
@@ -51,7 +52,7 @@ module.exports = (app) => {
             .catch(error => response.json(error));
     })
 
-    // saved article
+    // going to saved article (working)
     app.get("/articles/saved", (request, response) => {
         db.Article.find({ saved: true })
             .sort({ '_id': -1 })
@@ -68,28 +69,31 @@ module.exports = (app) => {
     // going to sing article to see notes and comments
     app.get("/articles/:articleId", (request, response) => {
         db.Article.findOne({ _id: request.params.articleId })
+            .populate("note")
             .then(foundArticles => {
                 response.render("article", foundArticles);
+                console.log(foundArticles);
             })
             .catch(error => response.json(error))
     })
 
-    // saving articles
+    // saving articles (working)
     app.put("/articles/save/:articleId", (request, response) => {
         db.Article.findOneAndUpdate({ _id: request.params.articleId }, { saved: request.body.saved }, { new: true })
             .then(updatedArticle => response.send("Save status updated."))
             .catch(error => response.json(error))
     })
 
+    // saving note (working)
     app.post("/notes/submit", (request, response) => {
         db.Note.create({ body: request.body.note })
             .then(createdNote => {
-                db.Article.findOneAndUpdate({ _id: request.body.articleId }, { $push: { notes: createdNote._id } }, { new: true })
-                    .then(updatedArticle => response.send("Note added."))
+               return db.Article.findOneAndUpdate({ _id: request.body.articleId }, { $push: { note: createdNote._id } }, { new: true })
+                    .then(updatedArticle => console.log("Note added."))
                     .catch(error => response.json(error));
             })
     })
-
+    // deleting note (working)
     app.delete("/notes/delete/:noteId", (request, response) => {
         db.Note.deleteOne({ _id: request.params.noteId })
             .then(deletedNote => response.send("Note deleted."))
