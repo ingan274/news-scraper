@@ -1,38 +1,37 @@
-const request = require("request");
+const axios = require("axios")
 const db = require("../models");
 const cheerio = require("cheerio");
 
 const scrapeSite = (serverResponse) => {
-    request("https://www.huffpost.com/news/politics", (error, response, html) => {
+    return axios.get("https://www.huffpost.com/news/politics", (error, response, html) => {
         const $ = cheerio.load(html);
 
-        $("div.card.card--standard").each((i, element) => {
+        $(".card.card--standard").each((i, element) => {
             const link = $(element).children("a").attr("href");
-            const title = $(element).children("div.card__text").children(".card__headlines").text()
-            const author = $(element).children("div.card__text").children(".card__byline").text()
-            const blurb = $(element).children("div.card__text").children(".card__description").text()
+            const title = $(element).children(".card__text").children(".card__headlines").text()
+            const author = $(element).children(".card__text").children(".card__byline").text()
+            const blurb = $(element).children(".card__text").children(".card__description").text()
 
-            const article = {
-                title: title,
-                link: link,
-                author: author,
-                description: blurb
+            if (author && link && title) {
+                const article = {
+                    title: title,
+                    link: link,
+                    author: author,
+                    description: blurb
+                }
+
+                db.Article.find({ link: article.link })
+                    .then(foundArticle => {
+                        if (!foundArticle.length) {
+                            db.Article.create(article)
+                                .catch(error => serverResponse.json(error));
+                        }
+                    })
+                    .catch(error => serverResponse.json(error));
             }
-
-            db.Article.find({ link: article.link })
-                .then(foundArticle => {
-                    if (!foundArticle.length) {
-                        db.Article.create(article)
-                            .catch(error => serverResponse.json(error));
-                    }
-                })
-                .catch(error => {
-                    serverResponse.json(error);
-                    res.sendStatus(500)
-                })
         })
         serverResponse.send("Scrape complete.");
     })
 }
 
-module.exports = scrapeSite;
+// module.exports = scrapeSite;
