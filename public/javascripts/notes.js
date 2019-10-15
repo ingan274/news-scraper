@@ -1,11 +1,11 @@
-$(document).ready(function(){
-  
-    $("#scrapeNews").on("click",function(event) {
+$(document).ready(function () {
+
+    $("#scrapeNews").on("click", function (event) {
         event.preventDefault();
         $.ajax("/articles/scrape", {
             type: "GET"
-        }).then(window.location.reload())
-        .catch(err => console.log(err));
+        }).then(data => window.location.href = window.location.href)
+            .catch(err => console.log(err));
     })
 
     $(".bookmark").on("click", function (event) {
@@ -19,11 +19,11 @@ $(document).ready(function(){
             data: {
                 saved: saved
             }
-        }).then(data => window.location.reload())
-        .catch(err => console.log(err));
+        }).then(data => window.location.href = window.location.href)
+            .catch(err => console.log(err));
     })
 
-    $(".individual-article").on("click",function(event) {
+    $(".individual-article").on("click", function (event) {
         event.preventDefault();
         const articleId = $(this).data("article-id")
         // alert("article: " + articleId + " " + "saved: " + saved)
@@ -31,7 +31,7 @@ $(document).ready(function(){
         $.ajax(`/articles/${articleId}`, {
             type: "GET"
         }).then(location.href = `/articles/${articleId}`)
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     })
 
     $(".add-note").on("click", function (event) {
@@ -48,8 +48,9 @@ $(document).ready(function(){
                     articleId: articleId,
                     note: note
                 }
-            }).then(window.location.reload())
-            .catch(err => console.log(err));
+            }).then(data => {
+                window.location.href = window.location.href;
+            }).catch(err => console.log(err));
         }
     })
 
@@ -57,7 +58,7 @@ $(document).ready(function(){
         const noteId = $(this).data("note-id");
         $.ajax(`/notes/delete/${noteId}`, {
             type: "DELETE"
-        }).then(data => window.location.reload())
-        .catch(err => console.log(err));
+        }).then(data => window.location.href = window.location.href)
+            .catch(err => console.log(err));
     })
 })
