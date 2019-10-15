@@ -139,7 +139,7 @@
   margin-bottom: 30px;
 }
 
-.authorInd {
+.authorInd{
   font-family: var(--title-font);
   color: var(--black);
   font-size: 20px;
@@ -156,4 +156,40 @@
 .fullArticle:hover {
   color: var(--black);
   text-decoration: none;
+}
+
+.notes {
+  margin-top: 100px;
+}
+
+form {
+  margin-bottom: 100px;
+  font-family: var(--text-font);
+}
+.form-control {
+  border: none;
+  border-bottom: 1px solid var(--blue);
+}
+
+.submit-btn {
+  background-color: var(--grey);
+  color: white;
+  font-family: var(--text-font);
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  background-color: white;
+  color: var(--blue);
+}
+
+.submit-btn:active {
+  background-color: white;
+  color: var(--black);
+}
+
+.labelNote {
+  font-family: var(--title-font);
+  color: var(--black);
+  font-size: 18px;
 }
