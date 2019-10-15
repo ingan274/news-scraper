@@ -67,14 +67,14 @@
   margin: 50px;
 }
 
-.noarticle {
+.noarticle, .notes-header {
   font-family: var(--text-font);
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--blue-half);
   text-align: center;
 }
 
-/* ----- ARTICLE CSS (IND) ---------- */
+/* ----- ARTICLE ALL CSS (IND) ---------- */
 
 .article {
   width: 33%;
@@ -120,4 +120,40 @@
 
 .imgsaveadd {
   width: 30px;
+}
+
+/* ----- ARTICLE (SINGLE)  ---------- */
+
+.indTitle {
+  font-family: var(--title-font);
+  font-size: 50px;
+  color: var(--black);
+  font-weight: 700;
+}
+
+.summaryInd {
+  font-family: var(--text-font);
+  color: var(--grey);
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.authorInd {
+  font-family: var(--title-font);
+  color: var(--black);
+  font-size: 20px;
+  margin: 30px 0px;
+}
+
+.fullArticle {
+  color: var(--blue);
+  font-family: var(--title-font);
+  font-size: 20px;
+  margin: 30px 0px;
+}
+
+.fullArticle:hover {
+  color: var(--black);
+  text-decoration: none;
 }

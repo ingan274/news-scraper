@@ -37,6 +37,7 @@ module.exports = (app) => {
         })
     })
 
+    // home
     app.get("/", (request, response) => {
         db.Article.find()
             .sort({ '_id': -1 })
@@ -50,6 +51,7 @@ module.exports = (app) => {
             .catch(error => response.json(error));
     })
 
+    // saved article
     app.get("/articles/saved", (request, response) => {
         db.Article.find({ saved: true })
             .sort({ '_id': -1 })
@@ -63,6 +65,7 @@ module.exports = (app) => {
             .catch(error => response.json(error));
     })
 
+    // going to sing article to see notes and comments
     app.get("/articles/:articleId", (request, response) => {
         db.Article.findOne({ _id: request.params.articleId })
             .then(foundArticles => {
@@ -71,6 +74,7 @@ module.exports = (app) => {
             .catch(error => response.json(error))
     })
 
+    // saving articles
     app.put("/articles/save/:articleId", (request, response) => {
         db.Article.findOneAndUpdate({ _id: request.params.articleId }, { saved: request.body.saved }, { new: true })
             .then(updatedArticle => response.send("Save status updated."))

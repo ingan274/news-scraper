@@ -1,37 +1,3 @@
-<div class="head container-fluid">
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="pos-f-t col-1">
-            <div class="collapse" id="navbarToggleExternalContent">
-                <div class=" p-4">
-                    <div class="col-4">
-                        {{#if home}}
-                        <a href="/" class="btn home-btn disabled" id="disabled-btn">Home</a>
-                        <a href="/articles/saved" class="btn saved-btn btn-light">Saved Articles</a>
-                        {{else}}
-                        <a href="/" class="btn home-btn">Home</a>
-                        <a href="/articles/saved" class="btn saved-btn disabled" id="disabled-btn">Saved Articles</a>
-                        {{/if}}
-                        <button class="btn scrape-btn" id="scrapeNews">Refresh News</button>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar navbar-dark ">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </nav>
-        </div>
-
-        <h1 class="websiteTitle col-8">Epicenter <span class="subtitle">For the latest and greatest in political
-                news</span>
-        </h1>
-        <div class="col-2"></div>
-    </div>
-</div>
-
 <div class="container-fluid">
     <h3 class="pageTitle">
         {{#if home}}

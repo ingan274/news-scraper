@@ -23,6 +23,17 @@ $(document).ready(function(){
         .catch(err => console.log(err));
     })
 
+    $(".individual-article").on("click",function(event) {
+        event.preventDefault();
+        const articleId = $(this).data("article-id")
+        // alert("article: " + articleId + " " + "saved: " + saved)
+
+        $.ajax(`/articles/${articleId}`, {
+            type: "GET"
+        }).then(location.href = `/articles/${articleId}`)
+        .catch(err => console.log(err));
+    })
+
     $(".add-note").on("click", function (event) {
         event.preventDefault();
         const articleId = $(this).data("article-id");

@@ -1,8 +1,12 @@
 <div id="{{_id}}" class="container">
-    {{title}}
+    <div class="indTitle">{{title}}</div>
     <hr class="line">
-    <p class='author'>by {{author}}</p>
-    <p class="summary">{{description}} <a href="{{link}}" target="_blank">Read Full Article in new tab.</a></p>
+    <p class='authorInd'>by {{author}}</p>
+    <p class="summaryInd">{{description}} </p>
+    <a href="{{link}}" target="_blank">
+        <div class="fullArticle">Read Full Article Here.
+        </div>
+    </a>
 
     <div class="note">
         {{#if notes}}
@@ -15,7 +19,7 @@
                 <div class="note-body">
                     {{body}}
                     <img src="/images/remove-button.png" data-article-id="{{_id}}" class="delete-note"
-                        data-note-id="{{_id}}" data-article-id="{{../_id}}" >
+                        data-note-id="{{_id}}" data-article-id="{{../_id}}">
                 </div>
                 {{/each}}
             </div>
