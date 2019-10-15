@@ -1,6 +1,6 @@
 // const scrapeSite = require("./scraper");
 const axios = require("axios")
-const db = require("../models");
+const db = require("../models/index.js");
 const cheerio = require("cheerio");
 
 module.exports = (app) => {
@@ -9,7 +9,7 @@ module.exports = (app) => {
         // Making a request via axios for reddit's "webdev" board. The page's HTML is passed as the callback's third argument
         axios.get(url).then(function (response) {
             var $ = cheerio.load(response.data);
-            $("div.card.card--standard").each(function (i, element) {
+            $("div.card").each(function (i, element) {
                 let link = $(element).children("a").attr("href");
                 let title = $(element).children(".card__text").children(".card__headlines").text()
                 let author = $(element).children(".card__text").children(".card__byline").children(".author-list").children(".card__byline__author").text()
@@ -20,26 +20,18 @@ module.exports = (app) => {
                     title: title,
                     link: link,
                     author: author,
-                    description: blurb
+                    description: blurb,
+                    saved: false
                 }
-                // console.log(article);
-
-                db.Article.find({ link: article.link }, function (err, inserted) {
-                    if (err) {
-                        console.log(err)
-                        res.send("oops" + err)
-                    } else {
-                        res.send("good job! scrape complete")
-                        console.log(inserted)
-                    }
-                })
+                console.log(article);
+                db.Article.find({ link: article.link})
                     .then(foundArticle => {
                         if (!foundArticle.length) {
                             db.Article.create(article)
-                                .catch(error => serverResponse.json(error));
+                                .catch(error => console.log(error));
                         }
                     })
-                    .catch(error => serverResponse.json(error));
+                    .catch(error =>  console.log(error));
             });
             console.log("Scrape complete.");
         })
@@ -80,7 +72,7 @@ module.exports = (app) => {
     })
 
     app.put("/articles/save/:articleId", (request, response) => {
-        db.Article.findOneAndUpdate({ _id: request.params.articleId }, { saved: request.body.save }, { new: true })
+        db.Article.findOneAndUpdate({ _id: request.params.articleId }, { saved: request.body.saved }, { new: true })
             .then(updatedArticle => response.send("Save status updated."))
             .catch(error => response.json(error))
     })

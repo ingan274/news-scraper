@@ -6,6 +6,7 @@
   --grey-half: #b1b1b17c;
   --text-font: 'Lato', sans-serif;
   --title-font:'Playfair Display', serif;
+  /* 400, 700 */
 }
 
 .head {
@@ -73,4 +74,50 @@
   text-align: center;
 }
 
-/* ----- ARTICLE CSS (IND) */
+/* ----- ARTICLE CSS (IND) ---------- */
+
+.article {
+  width: 33%;
+  padding: 50px 60px;
+}
+
+.articleTitle {
+  font-family: var(--title-font);
+  font-size: 30px;
+  color: var(--black);
+  font-weight: 700;
+}
+
+.line {
+  border-top: 1px solid var(--blue);
+  width: 20%;
+  margin: 30px 0px;
+}
+
+.summary {
+  font-family: var(--text-font);
+  color: var(--grey);
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.author{
+  font-family: var(--title-font);
+  color: var(--black);
+  font-size: 14px;
+  margin: 30px 0px;
+}
+
+.linkToArticle {
+  color: var(--blue);
+}
+
+.linkToArticle:hover {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.imgsaveadd {
+  width: 30px;
+}

@@ -12,7 +12,7 @@
                         <a href="/" class="btn home-btn">Home</a>
                         <a href="/articles/saved" class="btn saved-btn disabled" id="disabled-btn">Saved Articles</a>
                         {{/if}}
-                        <button class="btn scrape-btn" id="scrape">Refresh News</button>
+                        <button class="btn scrape-btn" id="scrapeNews">Refresh News</button>
                     </div>
                 </div>
             </div>
@@ -32,27 +32,34 @@
     </div>
 </div>
 
-<div class="container">
-
+<div class="container-fluid">
     <h3 class="pageTitle">
         {{#if home}}
         {{else}}
         Saved Articles
         {{/if}}
     </h3>
-    {{#if articles.length}}
-    {{#each articles}}
-    {{> articles}}
-    {{/each}}
-    {{else}}
-    <div class="noarticle">
-        No articles
-        {{#if home}}
-        found. Try hitting "Refresh News" in the menu to see what's new!
-        {{else}}
-        saved. Head to the home page to find some faves!
-        {{/if}}
-    </div>
-    {{/if}}
+    <div class="row">
+        <div class="col-1"></div>
 
+        <div class="col-10">
+
+            {{#if articles.length}}
+            {{#each articles}}
+            {{> articles}}
+            {{/each}}
+            {{else}}
+
+            <div class="noarticle">
+                No articles
+                {{#if home}}
+                found. Try hitting "Refresh News" in the menu to see what's new!
+                {{else}}
+                saved. Head to the home page to find some faves!
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+        <div class="col-1"></div>
+    </div>
 </div>

@@ -1,20 +1,18 @@
-<div class="article">
-    <div class="card-header" id="{{_id}}-block">
+<div class="article d-inline-flex">
+    <div id="{{_id}}-block">
         <h5 class="articleTitle">
             {{title}}
         </h5>
         <hr class="line">
         <p class='author'>by {{author}}</p>
-        <p class="summary">{{description}} <a href="{{link}}" target="_blank">Read more in new tab.</a></p>
-        {{#if ../home}}
+        <p class="summary">{{description}} <a href="{{link}}" class="linkToArticle" target="_blank">Read more in new
+                tab.</a></p>
         {{#if saved}}
-        <img src="/images/save.png" data-article-id="{{_id}}" class="saveaddbtn unsave" >
+        <img data-article-id="{{_id}}" src="/images/save.png" class="imgsaveadd bookmark" data-save="false">
         {{else}}
-        <img src="/images/nosave.png" data-article-id="{{_id}}" class="saveaddbtn save">
+        <img src="/images/nosave.png" data-article-id="{{_id}}" data-save="true" class="imgsaveadd bookmark">
         {{/if}}
-        {{else}}
-        <img src="/images/nosave.png" class="saveaddbtn unsave" data-article-id="{{_id}}">
-        {{/if}}
-        <img src="/images/addnote.png" data-article-id="{{_id}}" class="saveaddbtn">
+
+        <img src="/images/addnote.png" data-article-id="{{_id}}" class="imgsaveadd">
     </div>
 </div>
