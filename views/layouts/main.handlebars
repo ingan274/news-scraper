@@ -37,9 +37,16 @@
                             <a href="/" class="btn home-btn disabled" id="disabled-btn">Home</a>
                             <a href="/articles/saved" class="btn saved-btn btn-light">Saved Articles</a>
                             {{else}}
+                            {{#if indarticle}}
+                            <a href="/" class="btn home-btn">Home</a>
+                            <a href="/articles/saved" class="btn saved-btn">Saved
+                                Articles</a>
+                            {{else}}
                             <a href="/" class="btn home-btn">Home</a>
                             <a href="/articles/saved" class="btn saved-btn disabled" id="disabled-btn">Saved
                                 Articles</a>
+                            {{/if}}
+
                             {{/if}}
                             <button class="btn scrape-btn" id="scrapeNews">Refresh News</button>
                         </div>

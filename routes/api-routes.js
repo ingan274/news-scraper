@@ -45,6 +45,7 @@ module.exports = (app) => {
             .then(foundArticles => {
                 const handlebarsObject = {
                     home: true,
+                    indarticle: false,
                     articles: foundArticles
                 }
                 response.render("home", handlebarsObject);
@@ -59,6 +60,7 @@ module.exports = (app) => {
             .then(foundArticles => {
                 const handlebarsObject = {
                     home: false,
+                    indarticle: false,
                     articles: foundArticles
                 }
                 response.render("home", handlebarsObject);
@@ -66,13 +68,19 @@ module.exports = (app) => {
             .catch(error => response.json(error));
     })
 
-    // going to sing article to see notes and comments
+    // going to single article to see notes and comments
     app.get("/articles/:articleId", (request, response) => {
         db.Article.findOne({ _id: request.params.articleId })
             .populate("note")
             .then(foundArticles => {
-                response.render("article", foundArticles);
-                console.log(foundArticles);
+                const handlebarsObject = {
+                    home: false,
+                    indarticle: true,
+                    article: foundArticles
+                }
+                // console.log(handlebarsObject)
+                response.render("article", handlebarsObject);
+                // console.log(foundArticles);
             })
             .catch(error => response.json(error))
     })
@@ -80,7 +88,10 @@ module.exports = (app) => {
     // saving articles (working)
     app.put("/articles/save/:articleId", (request, response) => {
         db.Article.findOneAndUpdate({ _id: request.params.articleId }, { saved: request.body.saved }, { new: true })
-            .then(updatedArticle => response.send("Save status updated."))
+            .then(updatedArticle => {
+                response.send("Save status updated.");
+                response.sendStatus(200);
+            })
             .catch(error => response.json(error))
     })
 
@@ -88,15 +99,21 @@ module.exports = (app) => {
     app.post("/notes/submit", (request, response) => {
         db.Note.create({ body: request.body.note })
             .then(createdNote => {
-               return db.Article.findOneAndUpdate({ _id: request.body.articleId }, { $push: { note: createdNote._id } }, { new: true })
-                    .then(updatedArticle => console.log("Note added."))
+                return db.Article.findOneAndUpdate({ _id: request.body.articleId }, { $push: { note: createdNote._id } }, { new: true })
+                    .then(updatedArticle => {
+                        console.log("Note added.");
+                        response.sendStatus(200)
+                    })
                     .catch(error => response.json(error));
             })
     })
     // deleting note (working)
     app.delete("/notes/delete/:noteId", (request, response) => {
         db.Note.deleteOne({ _id: request.params.noteId })
-            .then(deletedNote => response.send("Note deleted."))
+            .then(deletedNote => {
+                response.send("Note deleted.");
+                response.sendStatus(200);
+            })
             .catch(error => response.json(error));
     })
 }
