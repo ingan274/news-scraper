@@ -32,8 +32,8 @@ var apiRoutes = require("./routes/api-routes");
 apiRoutes(app);
 
 // Connect to the Mongo DB
-var connection = process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
-mongoose.connect(connection, { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
+mongoose.connect(MONGODB_URI);
 mongoose.Promise = Promise;
 
 // Start the server
