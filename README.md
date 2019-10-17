@@ -14,7 +14,7 @@ This app scrapes the Huffington Post's Politics website and shows you all their 
 
 See it live: https://huffpo-politics-scraper.herokuapp.com/
 
-## Technologies Used
+## Technologies Used  
 * Mongoose
 * Cheerio 
 * Bootstrap 4
@@ -27,7 +27,9 @@ See it live: https://huffpo-politics-scraper.herokuapp.com/
 * a date for when a note was posted
 * Adding in a "next page" or "load more" feature when there are more than a certain number of articles in the database.
 * Users should have to create accounts and sign in to use all the features of the site. This will allow for...
-1. individual users to have their own individual set of saved articles.
-2. notes to be visibly associated with a username.
-3. users to only be able to delete their own notes.
+    1. individual users to have their own individual set of saved articles.
+    2. notes to be visibly associated with a username.
+    3. users to only be able to delete their own notes.
 
+
+###### Happy Reading!
