@@ -28,12 +28,12 @@ See it live: https://huffpo-politics-scraper.herokuapp.com/
 ## Areas for Further Development
 * More robust article information, including images, publication dates, etc.
 * The ability to see the full article when click in to the article to see the notes
-* a date for when a note was posted
+* Added date for when a comment was posted and ability to comment and make threads
 * Adding in a "next page" or "load more" feature when there are more than a certain number of articles in the database.
 * Users should have to create accounts and sign in to use all the features of the site. This will allow for...
-    1. individual users to have their own individual set of saved articles.
-    2. notes to be visibly associated with a username.
-    3. users to only be able to delete their own notes.
+    1. Individual users to have their own individual set of saved articles.
+    2. Comments to be visibly associated with a username.
+    3. Users to only be able to delete their own notes.
 
 
 ###### Happy Reading!
