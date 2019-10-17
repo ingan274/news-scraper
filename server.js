@@ -30,15 +30,15 @@ var apiRoutes = require("./routes/api-routes");
 apiRoutes(app);
 
 
-// Connect to the Mongo DB 
-var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
+// Connect to the Mongo DB process.env.MONGODB_URI ||
+var MONGODB_URI =   "mongodb://localhost/huffpo_politics_db";
 console.log(MONGODB_URI)
 mongoose.set('debug', true);
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true})
 .then(() => {
   console.log("Mongoose is successfully connected")
 })
-.catch((err) => console.log(' Problem with mongo! ' + err));
+.catch((err) => console.log(' Problem with mongodb! ' + err));
 mongoose.Promise = Promise;
 
 // Start the server
