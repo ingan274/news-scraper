@@ -12,7 +12,7 @@
         {{#if article.note}}
         <div class="notes">
             <div class="notes-header">
-                Notes
+                Comments
             </div>
             <div class="all-notes container">
                 {{#each article.note}}
@@ -28,14 +28,14 @@
         {{else}}
         <div class="notes">
             <div class="notes-header">
-                There are no notes for this article yet. Why don't you write the first one?
+                There are no comments for this article yet. Why don't you write the first one?
             </div>
         </div>
         {{/if}}
         <br>
         <form>
             <div class="form-group">
-                <label for="noteInput" class="labelNote">Add a Note:</label>
+                <label for="noteInput" class="labelNote">Add a Comment:</label>
                 <textarea class="form-control" id="{{_id}}-input" rows="3"></textarea>
             </div>
             <button type="submit" class="btn submit-btn add-note" data-article-id="{{_id}}">Submit</button>
