@@ -12,7 +12,7 @@ This app scrapes the Huffington Post's Politics website and shows you all their 
 
 2. Add comments: click on the "+" icon and head over to the article page to add a comment!
 
-See it live: 
+See it live: https://huffpo-politics-scraper.herokuapp.com/
 
 ## Technologies Used
 * Mongoose
