@@ -7,10 +7,8 @@ var dotenv = require("dotenv");
 dotenv.config();
 
 
-var PORT = 8000;
+var PORT = 8080;
 
-// Require all models
-var db = require("./models");
 
 // Initialize Express
 var app = express();
@@ -33,7 +31,8 @@ apiRoutes(app);
 
 // Connect to the Mongo DB
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
-mongoose.connect(MONGODB_URI);
+console.log(MONGODB_URI)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.Promise = Promise;
 
 // Start the server

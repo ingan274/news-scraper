@@ -11,7 +11,7 @@
     "express-handlebars": "^3.1.0",
     "mongoose": "^5.7.4",
     "morgan": "^1.9.1",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.4"
   },
   "devDependencies": {},
   "scripts": {
