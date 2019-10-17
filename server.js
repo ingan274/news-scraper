@@ -7,7 +7,7 @@ var dotenv = require("dotenv");
 dotenv.config();
 
 
-var PORT = 8080;
+var PORT = 8000;
 
 
 // Initialize Express
@@ -29,10 +29,16 @@ app.set("view engine", "handlebars");
 var apiRoutes = require("./routes/api-routes");
 apiRoutes(app);
 
+
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
+var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
 console.log(MONGODB_URI)
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.set('debug', true);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true})
+.then(() => {
+  console.log("Mongoose is successfully connected")
+})
+.catch((err) => console.log(' Problem with mongo! ' + err));
 mongoose.Promise = Promise;
 
 // Start the server

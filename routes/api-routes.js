@@ -24,7 +24,7 @@ module.exports = (app) => {
                     description: blurb,
                     saved: false
                 }
-                console.log(article);
+                // console.log(article);
                 db.Article.find({ link: article.link })
                     .then(foundArticle => {
                         if (!foundArticle.length) {
@@ -40,7 +40,7 @@ module.exports = (app) => {
 
     // home (working)
     app.get("/", (request, response) => {
-        db.Article.find()
+        db.Article.find({})
             .sort({ '_id': -1 })
             .then(foundArticles => {
                 const handlebarsObject = {
@@ -48,9 +48,13 @@ module.exports = (app) => {
                     indarticle: false,
                     articles: foundArticles
                 }
-                response.render("home", handlebarsObject);
+                response.send("Hey there")
+                //response.render("home", handlebarsObject);
             })
-            .catch(error => response.json(error));
+            .catch(err => {
+                console.log(err);
+                response.sendStatus(500);
+            });
     })
 
     // going to saved article (working)
@@ -65,7 +69,10 @@ module.exports = (app) => {
                 }
                 response.render("home", handlebarsObject);
             })
-            .catch(error => response.json(error));
+            .catch(err => {
+                console.log(err);
+                response.sendStatus(500);
+            });
     })
 
     // going to single article to see notes and comments
@@ -82,7 +89,10 @@ module.exports = (app) => {
                 response.render("article", handlebarsObject);
                 // console.log(foundArticles);
             })
-            .catch(error => response.json(error))
+            .catch(err => {
+                console.log(err);
+                response.sendStatus(500);
+            });
     })
 
     // saving articles (working)
@@ -92,7 +102,10 @@ module.exports = (app) => {
                 response.send("Save status updated.");
                 response.sendStatus(200);
             })
-            .catch(error => response.json(error))
+            .catch(err => {
+                console.log(err);
+                response.sendStatus(500);
+            });
     })
 
     // saving note (working)
@@ -104,7 +117,10 @@ module.exports = (app) => {
                         console.log("Note added.");
                         response.sendStatus(200)
                     })
-                    .catch(error => response.json(error));
+                    .catch(err => {
+                        console.log(err);
+                        response.sendStatus(500);
+                    });
             })
     })
     // deleting note (working)
@@ -114,6 +130,9 @@ module.exports = (app) => {
                 response.send("Note deleted.");
                 response.sendStatus(200);
             })
-            .catch(error => response.json(error));
+            .catch(err => {
+                console.log(err);
+                response.sendStatus(500);
+            });
     })
 }
