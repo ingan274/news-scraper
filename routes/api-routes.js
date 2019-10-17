@@ -29,6 +29,7 @@ module.exports = (app) => {
                     .then(foundArticle => {
                         if (!foundArticle.length) {
                             db.Article.create(article)
+                                .then(() => response.sendStatus(200))
                                 .catch(error => console.log(error));
                         }
                     })
@@ -48,8 +49,7 @@ module.exports = (app) => {
                     indarticle: false,
                     articles: foundArticles
                 }
-                response.send("Hey there")
-                //response.render("home", handlebarsObject);
+                response.render("home", handlebarsObject);
             })
             .catch(err => {
                 console.log(err);

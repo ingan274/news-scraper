@@ -30,7 +30,7 @@ var apiRoutes = require("./routes/api-routes");
 apiRoutes(app);
 
 
-// Connect to the Mongo DB
+// Connect to the Mongo DB 
 var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
 console.log(MONGODB_URI)
 mongoose.set('debug', true);
