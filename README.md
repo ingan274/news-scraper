@@ -4,13 +4,15 @@ Your one source for all things political! We give you the headlines and short de
 <img src="https://media.giphy.com/media/xUNemVaUZFSgHxvQXK/giphy.gif">
 
 ### There is always so much change going on in Politics. You need to stay informed!
-This app scrapes the Huffington Post's Politics website and shows you all their latest home page articles.
+This app scrapes the HuffPost's Politics page and shows you all their latest articles, just refresh the news!
 
 ### On Epicenter you can: 
 
 1. Saved Articles: On the home page, press the bookmark icon to save the article. Head on to "Saved Article" page to see all the articles that were saved.
 
 2. Add comments: click on the "+" icon and head over to the article page to add a comment!
+
+3. Refresh News: Click on "Refresh News" and make sure that you are seeing the most recent news!
 
 See it live: https://huffpo-politics-scraper.herokuapp.com/
 
