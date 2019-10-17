@@ -1,5 +1,5 @@
 # News Scraper: Epicenter
-News Scraper using Mongoose and Cheerio
+Your one source for all things political! We give you the headlines and short descriptions to provide our audience with the fastest way to learn what is new and stay infromed. What to learn more about it? We also provide a link to the full article.
 
 <img src="https://media.giphy.com/media/xUNemVaUZFSgHxvQXK/giphy.gif">
 
@@ -14,7 +14,7 @@ This app scrapes the Huffington Post's Politics website and shows you all their 
 
 See it live: https://huffpo-politics-scraper.herokuapp.com/
 
-## Technologies Used
+## Technologies Used  
 * Mongoose
 * Cheerio 
 * Bootstrap 4
@@ -27,7 +27,10 @@ See it live: https://huffpo-politics-scraper.herokuapp.com/
 * a date for when a note was posted
 * Adding in a "next page" or "load more" feature when there are more than a certain number of articles in the database.
 * Users should have to create accounts and sign in to use all the features of the site. This will allow for...
-1. individual users to have their own individual set of saved articles.
-2. notes to be visibly associated with a username.
-3. users to only be able to delete their own notes.
+    1. individual users to have their own individual set of saved articles.
+    2. notes to be visibly associated with a username.
+    3. users to only be able to delete their own notes.
 
+
+###### Happy Reading!
+<img src="https://media.giphy.com/media/9dFvgd4ID6ne0/giphy.gif">
