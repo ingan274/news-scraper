@@ -14,6 +14,8 @@ This app scrapes the Huffington Post's Politics website and shows you all their 
 
 See it live: https://huffpo-politics-scraper.herokuapp.com/
 
+<img src="./public/images/epicenter.gif">
+
 ## Technologies Used  
 * Mongoose
 * Cheerio 
