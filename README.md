@@ -1,5 +1,5 @@
 # News Scraper: Epicenter
-News Scraper using Mongoose and Cheerio
+Your one source for all things political! We give you the headlines and short descriptions to provide our audience with the fastest way to learn what is new and stay infromed. What to learn more about it? We also provide a link to the full article.
 
 <img src="https://media.giphy.com/media/xUNemVaUZFSgHxvQXK/giphy.gif">
 
@@ -33,3 +33,4 @@ See it live: https://huffpo-politics-scraper.herokuapp.com/
 
 
 ###### Happy Reading!
+<img src="https://media.giphy.com/media/9dFvgd4ID6ne0/giphy.gif">
