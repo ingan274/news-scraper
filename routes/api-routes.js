@@ -17,26 +17,32 @@ module.exports = (app) => {
                 let blurb = $(element).children(".card__text").children(".card__description").text()
                 // console.log(element)
 
-                let article = {
-                    title: title,
-                    link: link,
-                    author: author,
-                    description: blurb,
-                    saved: false
+                if (link && title && author && blurb) {
+                    let article = {
+                        title: title,
+                        link: link,
+                        author: author,
+                        description: blurb,
+                        saved: false
+                    }
+                    // console.log(article);
+                    db.Article.find({ link: article.link })
+                        .then(foundArticle => {
+                            if (!foundArticle.length) {
+                                db.Article.create(article)
+                                    .then()
+                                    .catch(error => console.log(error));
+                            }
+                        })
+                        .catch(error => console.log(error));
                 }
-                // console.log(article);
-                db.Article.find({ link: article.link })
-                    .then(foundArticle => {
-                        if (!foundArticle.length) {
-                            db.Article.create(article)
-                                .then(() => response.sendStatus(200))
-                                .catch(error => console.log(error));
-                        }
-                    })
-                    .catch(error => console.log(error));
+                
             });
             console.log("Scrape complete.");
+        }).then(() => {
+            response.sendStatus(200)
         })
+        .catch(error => console.log(error));
     })
 
     // home (working)
@@ -87,6 +93,7 @@ module.exports = (app) => {
                 }
                 // console.log(handlebarsObject)
                 response.render("article", handlebarsObject);
+                response.sendStatus(200);
                 // console.log(foundArticles);
             })
             .catch(err => {
@@ -101,6 +108,7 @@ module.exports = (app) => {
             .then(updatedArticle => {
                 response.send("Save status updated.");
                 response.sendStatus(200);
+                // console.log(updatedArticle)
             })
             .catch(err => {
                 console.log(err);
@@ -113,9 +121,10 @@ module.exports = (app) => {
         db.Note.create({ body: request.body.note })
             .then(createdNote => {
                 return db.Article.findOneAndUpdate({ _id: request.body.articleId }, { $push: { note: createdNote._id } }, { new: true })
-                    .then(updatedArticle => {
+                    .then(addedNote => {
                         console.log("Note added.");
                         response.sendStatus(200)
+                         // console.log(addedNote)
                     })
                     .catch(err => {
                         console.log(err);

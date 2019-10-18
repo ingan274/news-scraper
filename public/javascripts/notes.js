@@ -4,7 +4,11 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax("/articles/scrape", {
             type: "GET"
-        }).then(data => window.location.href = window.location.href)
+        }).then(data => {
+            window.location.href = window.location.href;
+            // alert("reload")
+
+        })
             .catch(err => console.log(err));
     })
 
