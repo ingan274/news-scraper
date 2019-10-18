@@ -32,7 +32,7 @@ apiRoutes(app);
 
 // Connect to the Mongo DB 
 var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
-console.log(MONGODB_URI)
+// console.log(MONGODB_URI)
 mongoose.set('debug', true);
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true})
 .then(() => {
