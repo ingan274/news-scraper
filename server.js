@@ -1,6 +1,6 @@
 var express = require("express");
 var logger = require("morgan");
-var mongoose = require("mongoose");
+var mongoose = require("mongoose");;
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var dotenv = require("dotenv");
