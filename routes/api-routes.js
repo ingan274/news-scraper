@@ -36,13 +36,13 @@ module.exports = (app) => {
                         })
                         .catch(error => console.log(error));
                 }
-                
+
             });
             console.log("Scrape complete.");
         }).then(() => {
             response.sendStatus(200)
         })
-        .catch(error => console.log(error));
+            .catch(error => console.log(error));
     })
 
     // home (working)
@@ -92,14 +92,19 @@ module.exports = (app) => {
                     article: foundArticles
                 }
                 // console.log(handlebarsObject)
-                response.render("article", handlebarsObject);
-                response.sendStatus(200);
+                // response.render("article", handlebarsObject);
+                response.status(200).render("article", handlebarsObject, (err, html)=>{
+                    response.send(html);
+               });
+              
+                // response.json(handlebarsObject)
+                response.status(200);
                 // console.log(foundArticles);
             })
             .catch(err => {
                 console.log(err);
-                response.sendStatus(500);
-            });
+                response.status(500);
+            })
     })
 
     // saving articles (working)
@@ -124,7 +129,7 @@ module.exports = (app) => {
                     .then(addedNote => {
                         console.log("Note added.");
                         response.sendStatus(200)
-                         // console.log(addedNote)
+                        // console.log(addedNote)
                     })
                     .catch(err => {
                         console.log(err);

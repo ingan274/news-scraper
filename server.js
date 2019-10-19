@@ -1,7 +1,6 @@
 var express = require("express");
 var logger = require("morgan");
-var mongoose = require("mongoose");;
-var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
 var dotenv = require("dotenv");
 dotenv.config();
@@ -34,13 +33,13 @@ apiRoutes(app);
 
 var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
 // console.log(MONGODB_URI)
-mongoose.set('debug', true);
+// mongoose.set('debug', true);
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true})
 .then(() => {
   console.log("Mongoose is successfully connected")
 })
 .catch((err) => console.log(' Problem with mongodb! ' + err));
-mongoose.Promise = Promise;
+mongoose.Promise = global.Promise;
 
 // Start the server
 app.listen(PORT, function() {
