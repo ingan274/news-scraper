@@ -1,5 +1,5 @@
 # News Scraper: Epicenter
-Your one source for all things political! We give you the headlines and short descriptions to provide our audience with the fastest way to learn what is new and stay infromed. What to learn more about it? We also provide a link to the full article.
+Your main source for all things Politics! Epicenter gives you headlines and short descriptions to provide its audience with the fastest way to stay updated on what is new in politics. What to learn more about it? Epicenter also provide a link to the full article, and our audience has the freedom to comment on the articles and share their thoughts! Happy Reading!
 
 <img src="https://media.giphy.com/media/xUNemVaUZFSgHxvQXK/giphy.gif">
 
