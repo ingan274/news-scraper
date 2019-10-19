@@ -41,21 +41,21 @@ $(document).ready(function () {
     $("#add-note").on("click", function (event) {
         event.preventDefault();
         const articleId = $(this).data("article-id");
-        alert(articleId)
+        // alert(articleId)
         const note = $(`#${articleId}-input`).val().trim();
 
-        // if (note) {
-        //     $(`#${articleId}-input`).val("");
-        //     $.ajax("/notes/submit", {
-        //         type: "POST",
-        //         data: {
-        //             articleId: articleId,
-        //             note: note
-        //         }
-        //     }).then(data => {
-        //         window.location.href = window.location.href;
-        //     }).catch(err => console.log(err));
-        // }
+        if (note) {
+            $(`#${articleId}-input`).val("");
+            $.ajax("/notes/submit", {
+                type: "POST",
+                data: {
+                    articleId: articleId,
+                    note: note
+                }
+            }).then(data => {
+                window.location.href = window.location.href;
+            }).catch(err => console.log(err));
+        }
     })
 
     $(".exit-button").on("click", ".delete-note", function (event) {
