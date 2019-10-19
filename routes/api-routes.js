@@ -92,14 +92,12 @@ module.exports = (app) => {
                     article: foundArticles
                 }
                 // console.log(handlebarsObject)
-                // response.render("article", handlebarsObject);
-                response.status(200).render("article", handlebarsObject, (err, html)=>{
-                    response.send(html);
-               });
-              
+                response.render("article", handlebarsObject);
+
+                console.log(handlebarsObject)
+
                 // response.json(handlebarsObject)
                 response.status(200);
-                // console.log(foundArticles);
             })
             .catch(err => {
                 console.log(err);
