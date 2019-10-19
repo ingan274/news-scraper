@@ -14,7 +14,7 @@ This app scrapes the HuffPost's Politics page and shows you all their latest art
 
 3. Refresh News: Click on "Refresh News" and make sure that you are seeing the most recent news!
 
-See it live: https://huffpo-politics-scraper.herokuapp.com/
+See it live: https://epicenter-news.herokuapp.com/
 
 <img src="./public/images/epicenter.gif">
 
