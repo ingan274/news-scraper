@@ -26,14 +26,16 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 var apiRoutes = require("./routes/api-routes");
+var htmlRoutes = require("./routes/html-routes");
 apiRoutes(app);
+htmlRoutes(app);
 
 
-// Connect to the Mongo DB 
+// Connect to the Mongo DB process.env.MONGODB_URI ||
 
-var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/huffpo_politics_db";
+var MONGODB_URI =   "mongodb://localhost/huffpo_politics_db";
 // console.log(MONGODB_URI)
-// mongoose.set('debug', true);
+mongoose.set('debug', true);
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true})
 .then(() => {
   console.log("Mongoose is successfully connected")
